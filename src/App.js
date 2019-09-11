@@ -1,14 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Electronics from './electronics/electronics';
-
-function Index() {
-    return <h1>Home</h1>;
-}
-
-function Maths() {
-    return <h1>Maths</h1>;
-}
+import Maths from './maths/Maths';
+import Home from './Home';
 
 function Header() {
     return (
@@ -32,7 +26,7 @@ function AppRouter() {
             <div>
                 <Header />
 
-                <Route exact path="/" component={Index} />
+                <Route exact path="/" component={Home} />
                 <Route path="/electronics/" component={Electronics} />
                 <Route path="/maths/" component={Maths} />
             </div>
