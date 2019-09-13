@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
+import { number } from 'prop-types';
 
-class ResistanceCalculator extends Component {
-    constructor(props) {
+interface Props { };
+
+interface State {
+    resitances: number[],
+    seriesResistance: number,
+    parallelResistance: number
+};
+
+export default class ResistanceCalculator extends React.Component<Props, State>{
+
+    constructor(props: Props) {
         super(props);
-        this.state = {
-            resitances: [0, 0],
-            seriesResistance: 0,
-            parallelResistance: 0
-        }
-    }
+    };
 
-    updateState(newResistance) {
+    state: State = {
+        resitances: [0, 0],
+        seriesResistance: 0,
+        parallelResistance: 0
+    };
+
+    updateState(newResistance: number[]) {
         debugger;
         newResistance = newResistance.map(Number);
         /**
@@ -28,13 +39,14 @@ class ResistanceCalculator extends Component {
         });
     }
 
-    addResistance = event => {
+
+    addResistance = () => {
         let newResistance = this.state.resitances.slice();
         newResistance = newResistance.concat([0]);
         this.updateState(newResistance);
     }
 
-    removeResistance = event => {
+    removeResistance = () => {
         if (this.state.resitances.length > 1) {
             let newResistance = this.state.resitances.slice();
             newResistance = newResistance.slice(0, -1);
@@ -44,17 +56,20 @@ class ResistanceCalculator extends Component {
         }
     }
 
-    handleChange(event, index) {
+
+    handleChange(event: React.FormEvent<HTMLInputElement>, index: number) {
         let newResistance = this.state.resitances.slice();
-        newResistance[index] = event.target.value;
+        newResistance[index] = parseInt(event.currentTarget.value);
         this.updateState(newResistance);
     }
+
+
 
     render() {
         return (
             <div>Resistance in Series: {this.state.seriesResistance}
                 Resistance in Parallel: {this.state.parallelResistance}
-                <form onSubmit={this.handleSubmit}>
+                <form>
                     <div>
                         {this.state.resitances.map((key, index) => {
                             return (
@@ -73,6 +88,4 @@ class ResistanceCalculator extends Component {
             </div>
         );
     }
-}
-
-export default ResistanceCalculator;
+};

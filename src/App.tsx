@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Electronics from './electronics/electronics';
 import Maths from './maths/Maths';
