@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
 import { number } from 'prop-types';
 
-interface Props { };
-
 interface State {
     resitances: number[],
     seriesResistance: number,
     parallelResistance: number
 };
 
-export default class ResistanceCalculator extends React.Component<Props, State>{
-
-    constructor(props: Props) {
-        super(props);
-    };
-
+export default class ResistanceCalculator extends React.Component<State>{
     state: State = {
         resitances: [0, 0],
         seriesResistance: 0,

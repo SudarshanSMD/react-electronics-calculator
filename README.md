@@ -1,3 +1,9 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/681cd2af-ba8c-4393-8492-90550f6d7299/deploy-status)](https://app.netlify.com/sites/determined-bhaskara-dbfce6/deploys)
+
+[demo](https://react-electronics-calculator.netlify.com/)
+
+##
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
