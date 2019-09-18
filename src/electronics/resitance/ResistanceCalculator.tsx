@@ -14,7 +14,7 @@ export default class ResistanceCalculator extends React.Component<State>{
         parallelResistance: 0
     };
 
-    updateState(newResistance: number[]) {
+    updateState(newResistance: number[]): void {
         debugger;
         newResistance = newResistance.map(Number);
         /**
@@ -32,14 +32,13 @@ export default class ResistanceCalculator extends React.Component<State>{
         });
     }
 
-
-    addResistance = () => {
+    addResistance = (): void => {
         let newResistance = this.state.resitances.slice();
         newResistance = newResistance.concat([0]);
         this.updateState(newResistance);
     }
 
-    removeResistance = () => {
+    removeResistance = (): void => {
         if (this.state.resitances.length > 1) {
             let newResistance = this.state.resitances.slice();
             newResistance = newResistance.slice(0, -1);
@@ -49,14 +48,11 @@ export default class ResistanceCalculator extends React.Component<State>{
         }
     }
 
-
-    handleChange(event: React.FormEvent<HTMLInputElement>, index: number) {
+    handleChange(event: React.FormEvent<HTMLInputElement>, index: number): void {
         let newResistance = this.state.resitances.slice();
         newResistance[index] = parseInt(event.currentTarget.value);
         this.updateState(newResistance);
     }
-
-
 
     render() {
         return (
