@@ -104,14 +104,7 @@ export default class ResistanceColorCodeCalculator extends React.Component<State
                             )}
 
                         Multiplier: {this.state.multiplier}
-                        <select name="multiplier"
-                            value={this.state.multiplier}
-                            onChange={(event) => this.handleChange(event)}
-                            style={{ backgroundColor: ColorCode[this.state.multiplier] }}>
-                            {Object.entries(ColorCode).slice(Object.entries(ColorCode).length / 2).map(entry => (
-                                <option style={{ backgroundColor: entry[0] }} value={entry[1]}></option>
-                            ))}
-                        </select>
+                        <ColorCodeSelect name="multiplier" onChange={(event) => this.handleChange(event)} value={this.state.multiplier} />
 
                         Tolerance: {this.state.tolerance}
                         <select name="tolerance"
