@@ -21,8 +21,12 @@ steps:
   displayName: 'npm install and build'
 
 
-- task: ArchiveFiles@2
+- task: CopyFiles@2
   inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-    archiveType: zip
-    includeRootFolder: false
+   # contents: '_buildOutput/**'
+    targetFolder: $(Build.ArtifactStagingDirectory)
+    
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: SudarshanSMD.react-electronics-calculator
