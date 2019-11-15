@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { isTemplateElement } from '@babel/types';
 import { number } from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
+
 
 enum ColorCode { '#000000', '#914A00', '#F40000', '#F8A400', '#FEFE00', '#9ECD1C', '#6C96F0', '#8F06D6', '#A0A0A0', '#FFFFFF' }
 
@@ -67,7 +71,7 @@ export default class ResistanceColorCodeCalculator extends React.Component<State
         });
     }
 
-    changeBandCount(event: React.FormEvent<HTMLButtonElement>, count: number): void {
+    changeBandCount(count: number): void {
         this.setState({
             isFourBand: count === 4 ? true : false,
         }, () => {
@@ -82,8 +86,10 @@ export default class ResistanceColorCodeCalculator extends React.Component<State
                 <div>
                     <div>
                         Number of bands: {this.state.isFourBand ? (<span>4</span>) : (<span>5</span>)}
-                        <button onClick={(event) => this.changeBandCount(event, 4)}>4</button>
-                        <button onClick={(event) => this.changeBandCount(event, 5)}>5</button>
+                        <ButtonGroup toggle className="mt-3">
+                            <ToggleButton type="radio" defaultChecked value="4" onClick={() => this.changeBandCount(4)}>4</ToggleButton>
+                            <ToggleButton type="radio" value="5" onClick={() => this.changeBandCount(5)}>5</ToggleButton>
+                        </ButtonGroup>
                     </div>
 
                     <form>
