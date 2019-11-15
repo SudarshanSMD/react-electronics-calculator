@@ -24,4 +24,5 @@ steps:
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    archiveType: zip
     includeRootFolder: false
