@@ -23,3 +23,4 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs: 
     pathtoPublish: $(Build.ArtifactStagingDirectory) # dist or build files
+    ArtifactName: _SudarshanSMD.react-electronics-calculator
