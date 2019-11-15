@@ -10,10 +10,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+#- task: NodeTool@0
+#  inputs:
+#    versionSpec: '10.x'
+#  displayName: 'Install Node.js'
 
 - script: |
     npm install
@@ -21,12 +21,21 @@ steps:
   displayName: 'npm install and build'
 
 
-- task: CopyFiles@2
-  inputs:
+#- task: CopyFiles@2
+#  inputs:
 #    SourceFolder: "$(System.ArtifactStagingDirectory)/build"
-    targetFolder: "$(Build.ArtifactStagingDirectory)"
-    
+#    targetFolder: "$(Build.ArtifactStagingDirectory)"
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.BinariesDirectory)/build'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
 - task: PublishBuildArtifacts@1
   inputs:
-    pathToPublish: $(Build.ArtifactStagingDirectory)
-    artifactName: SudarshanSMD.react-electronics-calculator
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
