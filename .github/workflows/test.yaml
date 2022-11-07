@@ -17,4 +17,4 @@ jobs:
       uses: azure/login@v1
       with:
         creds: '{"clientId":"4e45ec4e-1599-41b6-84ed-fd8e526155be","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"16195a49-804b-4707-bb52-686a311b9b98","tenantId":"43548595-c3b2-4c7c-b07b-b97911e6c10c"}'
-        # enable-AzPSSession: true
+        enable-AzPSSession: true
